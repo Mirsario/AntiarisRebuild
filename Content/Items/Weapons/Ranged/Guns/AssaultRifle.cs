@@ -13,9 +13,9 @@ namespace Antiaris.Content.Items.Weapons.Ranged.Guns
             item.DamageType = DamageClass.Ranged;
             item.width = 60;
             item.height = 22;
-            item.useAnimation = 12;
+            item.useAnimation = 18;
             item.useTime = 6;
-            item.reuseDelay = 18;
+            item.reuseDelay = 12;
             item.useStyle = ItemUseStyleID.Shoot;
             item.noMelee = true;
             item.knockBack = 2;
