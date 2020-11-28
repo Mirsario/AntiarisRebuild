@@ -5,8 +5,9 @@ using Terraria.Localization;
 using Terraria.ModLoader;
 using Terraria.ObjectData;
 
-namespace Antiaris.Tiles
+namespace Antiaris.Content.Tiles
 {
+	// TODO: rework
 	public class Banners : ModTile
 	{
 		public override void SetDefaults()
@@ -21,7 +22,6 @@ namespace Antiaris.Tiles
 			TileObjectData.newTile.StyleWrapLimit = 111;
 			TileObjectData.addTile(Type);
 			dustType = -1;
-			disableSmartCursor = true;
 			ModTranslation name = CreateMapEntryName();
 			name.SetDefault("Banner");
 			name.AddTranslation((int)GameCulture.CultureName.Russian, "Знамя");
@@ -110,14 +110,13 @@ namespace Antiaris.Tiles
 				default:
 					return;
 			}
-			Item.NewItem(i * 16, j * 16, 16, 48, mod.ItemType(item), 1, false, 0, false, false);
+			Item.NewItem(i * 16, j * 16, 16, 48, Mod.Find<ModItem>(item).Type, 1, false, 0, false, false);
 		}
 
 		public override void NearbyEffects(int i, int j, bool closer)
 		{
 			if (closer)
 			{
-				Player player = Main.LocalPlayer;
 				int style = Main.tile[i, j].frameX / 18;
 				string type;
 				switch (style)
@@ -197,8 +196,8 @@ namespace Antiaris.Tiles
 					default:
 						return;
 				}
-				player.NPCBannerBuff[mod.NPCType(type)] = true;
-				player.hasBanner = true;
+				Main.SceneMetrics.NPCBannerBuff[Mod.Find<ModNPC>(type).Type] = true;
+				Main.SceneMetrics.hasBanner = true;
 			}
 		}
 

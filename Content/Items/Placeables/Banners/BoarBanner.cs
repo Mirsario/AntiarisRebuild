@@ -1,9 +1,9 @@
 ﻿using Terraria;
+using Terraria.ID;
 using Terraria.Localization;
 using Terraria.ModLoader;
-using Terraria.ID;
 
-namespace Antiaris.Items.Placeables.Banners
+namespace Antiaris.Content.Items.Placeables.Banners
 {
 	public class BoarBanner : ModItem
 	{
@@ -16,11 +16,11 @@ namespace Antiaris.Items.Placeables.Banners
 			item.autoReuse = true;
 			item.useAnimation = 15;
 			item.useTime = 10;
-			item.useStyle = ItemUseStyleID.SwingThrow;
+			item.useStyle = ItemUseStyleID.Swing;
 			item.consumable = true;
 			item.rare = ItemRarityID.Blue;
 			item.value = Item.buyPrice(0, 0, 10, 0);
-			item.createTile = ModContent.TileType<Banners>();
+			item.createTile = ModContent.TileType<Tiles.Banners>();
 			item.placeStyle = 1;
 		}
 

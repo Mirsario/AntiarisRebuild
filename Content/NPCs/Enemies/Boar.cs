@@ -1,10 +1,11 @@
-﻿using Microsoft.Xna.Framework;
+﻿using Antiaris.Content.Gores;
+using Antiaris.Content.Items.Placeables.Banners;
 using Terraria;
 using Terraria.ID;
 using Terraria.Localization;
 using Terraria.ModLoader;
 
-namespace Antiaris.NPCs.Enemies
+namespace Antiaris.Content.NPCs.Enemies
 {
 	public class Boar : ModNPC
 	{
@@ -22,8 +23,8 @@ namespace Antiaris.NPCs.Enemies
 			npc.HitSound = SoundID.NPCHit1;
 			npc.DeathSound = SoundID.NPCDeath1;
 			npc.value = Item.buyPrice(0, 0, 4, 0);
-			bannerItem = ModContent.ItemType<BoarBanner>();
 			banner = npc.type;
+			bannerItem = ModContent.ItemType<BoarBanner>();
 		}
 
 		public override void SetStaticDefaults()
@@ -86,10 +87,12 @@ namespace Antiaris.NPCs.Enemies
 				{
 					Dust.NewDust(npc.position, npc.width, npc.height, 151, 2.5f * hitDirection, -2.5f, 0, default, 0.7f);
 				}
-				Gore.NewGore(npc.position, npc.velocity, mod.GetGoreSlot("Gores/BoarGore1"), 1f);
-				Gore.NewGore(npc.position, npc.velocity, mod.GetGoreSlot("Gores/BoarGore2"), 1f);
-				Gore.NewGore(npc.position, npc.velocity, mod.GetGoreSlot("Gores/BoarGore3"), 1f);
-				Gore.NewGore(npc.position, npc.velocity, mod.GetGoreSlot("Gores/BoarGore2"), 1f);
+
+				for (byte i = 0; i < 4; i++)
+				{
+					int index = Gore.NewGore(npc.position, npc.velocity, ModContent.GoreType<BoarGore>());
+					Main.gore[index].Frame.CurrentRow = i;
+				}
 			}
 		}
 
