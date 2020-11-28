@@ -1,5 +1,4 @@
-﻿using Antiaris.Content.Gores;
-using Antiaris.Content.Items.Placeables.Banners;
+﻿using Antiaris.Content.Items.Placeables.Banners;
 using Terraria;
 using Terraria.ID;
 using Terraria.Localization;
@@ -88,11 +87,10 @@ namespace Antiaris.Content.NPCs.Enemies
 					Dust.NewDust(npc.position, npc.width, npc.height, 151, 2.5f * hitDirection, -2.5f, 0, default, 0.7f);
 				}
 
-				for (byte i = 0; i < 4; i++)
-				{
-					int index = Gore.NewGore(npc.position, npc.velocity, ModContent.GoreType<BoarGore>());
-					Main.gore[index].Frame.CurrentRow = i;
-				}
+				Gore.NewGore(npc.position, npc.velocity, Mod.Find<ModGore>("BoarGore1").Type);
+				Gore.NewGore(npc.position, npc.velocity, Mod.Find<ModGore>("BoarGore2").Type);
+				Gore.NewGore(npc.position, npc.velocity, Mod.Find<ModGore>("BoarGore3").Type);
+				Gore.NewGore(npc.position, npc.velocity, Mod.Find<ModGore>("BoarGore4").Type);
 			}
 		}
 
