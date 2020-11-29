@@ -1,12 +1,15 @@
+using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
 using Terraria;
-using Terraria.ID;
+using Terraria.Localization;
 using Terraria.ModLoader;
+using Terraria.ID;
 
 namespace Antiaris.Content.Items.Materials
 {
 	public class GreenCrystalPixieDust : ModItem
-    {
-        /*public override void HoldItem(Player player)
+	{
+		/*public override void HoldItem(Player player)
 		{
 			AntiarisGlowMask2.AddGlowMask(mod.ItemType(GetType().Name), "Antiaris/Glow/" + GetType().Name + "_GlowMask");
 		}
@@ -16,13 +19,20 @@ namespace Antiaris.Content.Items.Materials
 			AntiarisUtils.DrawItemGlowMaskWorld(spriteBatch, item, mod.GetTexture("Glow/" + GetType().Name + "_GlowMask"), rotation, scale);
 		}*/
 
-        public override void SetDefaults()
-        {
-            item.width = 30;
-            item.height = 20;
-            item.value = Item.sellPrice(0, 0, 5, 5);
-            item.rare = ItemRarityID.Green;
-            item.maxStack = 999;
-        }
-    }
+		public override void SetDefaults()
+		{
+			item.width = 30;
+			item.height = 20;
+			item.value = Item.sellPrice(0, 0, 5, 5);
+			item.rare = ItemRarityID.Green;
+			item.maxStack = 999;
+		}
+
+		public override void SetStaticDefaults()
+		{
+			DisplayName.SetDefault("Green Crystal Pixie Dust");
+			DisplayName.AddTranslation((int)GameCulture.CultureName.Russian, "Зеленая кристальная пыльца пикси");
+			DisplayName.AddTranslation((int)GameCulture.CultureName.Chinese, "绿水晶精灵尘");
+		}
+	}
 }
