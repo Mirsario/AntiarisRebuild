@@ -1,13 +1,14 @@
-﻿using Microsoft.Xna.Framework;
+using Antiaris.Content.Items.Materials;
+using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
 using Terraria.Localization;
 using Terraria.ModLoader;
 using Terraria.ObjectData;
 
-namespace Antiaris.Tiles.Decorations
+namespace Antiaris.Content.Tiles.Furniture
 {
-	public class LeafDray : ModTile
+	public class BorealLeafDray : ModTile
 	{
 		public override void SetDefaults()
 		{
@@ -24,17 +25,12 @@ namespace Antiaris.Tiles.Decorations
 			AddMapEntry(new Color(220, 181, 151), name);
 		}
 
-		/*public void OverhaulInit()
-		{
-			this.SetTag(TileTags.Flammable);
-		}*/
-
 		public override void KillTile(int i, int j, ref bool fail, ref bool effectOnly, ref bool noItem)
 		{
 			if (Main.tile[i, j].frameX == 0 && Main.tile[i, j].frameY == 0)
 			{
-				Item.NewItem(i * 16, j * 16, 48, 48, ModContent.ItemType<Leaf>(), Main.rand.Next(15, 20), false, 0, false, false);
-				Item.NewItem(i * 16, j * 16, 48, 48, ItemID.Wood, Main.rand.Next(20, 30), false, 0, false, false);
+				Item.NewItem(i * 16, j * 16, 48, 48, Mod.Find<ModItem>(nameof(ChilledLeaf)).Type, Main.rand.Next(15, 20), false, 0, false, false);
+				Item.NewItem(i * 16, j * 16, 48, 48, ItemID.BorealWood, Main.rand.Next(20, 30), false, 0, false, false);
 			}
 		}
 	}

@@ -5,7 +5,7 @@ using Terraria.Localization;
 using Terraria.ModLoader;
 using Terraria.ObjectData;
 
-namespace Antiaris.Tiles.Decorations
+namespace Antiaris.Content.Tiles.Furniture
 {
 	public class Mailbox : ModTile
 	{
@@ -38,7 +38,7 @@ namespace Antiaris.Tiles.Decorations
 
 		public override void KillMultiTile(int i, int j, int frameX, int frameY)
 		{
-			Item.NewItem(i * 16, j * 16, 32, 16, ModContent.ItemType<Mailbox>(), 1, false, 0, false, false);
+			Item.NewItem(i * 16, j * 16, 32, 16, Mod.Find<ModItem>(nameof(Items.Placeables.Furniture.Mailbox)).Type, 1, false, 0, false, false);
 		}
 	}
 }

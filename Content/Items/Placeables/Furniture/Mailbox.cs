@@ -3,9 +3,9 @@ using Terraria.ID;
 using Terraria.Localization;
 using Terraria.ModLoader;
 
-namespace Antiaris.Items.Placeables.Decorations
+namespace Antiaris.Content.Items.Placeables.Furniture
 {
-	public class BorealMailbox : ModItem
+	public class Mailbox : ModItem
 	{
 		public override void SetDefaults()
 		{
@@ -16,11 +16,11 @@ namespace Antiaris.Items.Placeables.Decorations
 			item.autoReuse = true;
 			item.useAnimation = 15;
 			item.useTime = 10;
-			item.useStyle = ItemUseStyleID.SwingThrow;
+			item.useStyle = ItemUseStyleID.Swing;
 			item.consumable = true;
 			item.rare = ItemRarityID.Blue;
 			item.value = Item.buyPrice(0, 0, 10, 0);
-			item.createTile = ModContent.TileType<BorealMailbox>();
+			item.createTile = Mod.Find<ModTile>(nameof(Tiles.Furniture.Mailbox)).Type;
 		}
 
 		public override void SetStaticDefaults()
@@ -33,7 +33,7 @@ namespace Antiaris.Items.Placeables.Decorations
 		public override void AddRecipes()
 		{
 			CreateRecipe()
-				.AddIngredient(ItemID.BorealWood, 14)
+				.AddIngredient(ItemID.Wood, 14)
 				.AddTile(106)
 				.Register();
 		}
